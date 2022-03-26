@@ -105,9 +105,15 @@ describe('index.js', function(){
     const spy = sinon.spy(multiplyByTwo);
     
     const multiplyByTwoOnce = once(spy);
-    const resCall1 = multiplyByTwoOnce(5);
-    const resCall2 = multiplyByTwoOnce(10);
-    const resCall3 = multiplyByTwoOnce(12);
+    let resCall1
+    let resCall2
+    let resCall3
+
+    if (multiplyByTwoOnce instanceof Function) {
+      resCall1 = multiplyByTwoOnce(5);
+      resCall2 = multiplyByTwoOnce(10);
+      resCall3 = multiplyByTwoOnce(12);
+    }
 
     it('returns a function', function() {
       expect(multiplyByTwoOnce).to.be.a('function');
